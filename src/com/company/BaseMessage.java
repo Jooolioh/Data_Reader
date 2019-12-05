@@ -47,10 +47,8 @@ public class BaseMessage {
 
     @Override
     public String toString() {
-        return "BaseMessage{" +
-                "mex='" + getMexBinary() + '\'' +
+        return "mex='" + getMexBinary() + '\'' +
                 ", ID='" + ID + '\'' +
-                ", time=" + time +
-                '}';
+                ", time=" + time;
     }
 }

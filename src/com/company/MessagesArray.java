@@ -24,7 +24,11 @@ public class MessagesArray {
     }
 
     public void printAllTest(){
+        List<DataSetMessage> outList = new ArrayList<>();
         for (BaseMessage msg : messages){
+            outList.add(new DataSetMessage(msg.ID, msg.getMexBinary(), msg.time));
+        }
+        for (DataSetMessage msg : outList){
             System.out.println(msg.toString());
         }
     }
