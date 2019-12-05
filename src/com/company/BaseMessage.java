@@ -3,14 +3,12 @@ package com.company;
 public class BaseMessage {
     protected String mex;
     protected String ID;
-    protected float time;
-    protected int dataLength;
+    protected String time;
 
-    public BaseMessage( String mex, String ID, float time, int dataLength ) {
+    public BaseMessage( String mex, String ID, String time ) {
         this.mex = mex;
         this.ID = ID;
         this.time = time;
-        this.dataLength = dataLength;
     }
 
     public String getMexBinary() {
@@ -32,26 +30,12 @@ public class BaseMessage {
         return ID;
     }
 
-    public float getTime() {
+    public String getTime() {
         return time;
     }
 
-    public int getDataLength() {
-        return dataLength;
-    }
-
     public String getParam(int bitStart, int bitFinish ) {
-        return mex.substring(bitStart, bitFinish);
-    }
-
-    @Override
-    public String toString() {
-        return "BaseMessage{" +
-                "mex='" + getMexBinary() + '\'' +
-                ", ID='" + ID + '\'' +
-                ", time=" + time +
-                ", dataLength=" + dataLength +
-                '}';
+        return getMexBinary().substring(bitStart, bitFinish);
     }
 
     private final String[] hexBits = {
@@ -60,4 +44,13 @@ public class BaseMessage {
             "1000", "1001", "1010", "1011",
             "1100", "1101", "1110", "1111"
     };
+
+    @Override
+    public String toString() {
+        return "BaseMessage{" +
+                "mex='" + getMexBinary() + '\'' +
+                ", ID='" + ID + '\'' +
+                ", time=" + time +
+                '}';
+    }
 }

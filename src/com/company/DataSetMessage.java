@@ -2,10 +2,10 @@ package com.company;
 
 public class DataSetMessage {
     String ID;
-    float time;
+    String time;
     String value;
 
-    public DataSetMessage(String ID, String value, float time) {
+    public DataSetMessage(String ID, String value, String time) {
         this.ID = ID;
         this.time = time;
         this.value = value;
@@ -23,7 +23,7 @@ public class DataSetMessage {
         return String.valueOf(Long.parseLong(value,16));
     }
 
-    public float getTime() {
+    public String getTime() {
         return time;
     }
 

@@ -20,7 +20,7 @@ public class DataReaderManager {
             DataReaderManager dr = new DataReaderManager("out/production/Data_Reader/com/company/Log_temp.csv");
             int res = dr.readDataFromLog();
             System.out.println("Numero linee lette: " + res);
-            //messagesArray.printAllTest();
+            messagesArray.printAllTest();
         }catch(FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Errore File non trovato!");
@@ -74,12 +74,12 @@ public class DataReaderManager {
             //TODO parametrizzare questi valori REGEDIT
             //System.out.print(linea);
             String id = linea.substring(16, 18);
-            System.out.print("Id: " + id);
+            //System.out.print("Id: " + id);
             String time = linea.substring(1, 13);
-            System.out.print(" Time: " + time);
+            //System.out.print(" Time: " + time);
             String mex = linea.substring(30, 53).replace(" ", "");
-            System.out.println(" Mex: " + mex);
-            messagesArray.addMessage(new BaseMessage(mex, id, Float.parseFloat(time), Integer.parseInt(dtLength)));
+            //System.out.println(" Mex: " + mex);
+            messagesArray.addMessage(new BaseMessage(mex, id, time));
 
             linea = br.readLine();
             countFile++;
