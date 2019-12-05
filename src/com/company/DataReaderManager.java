@@ -19,7 +19,7 @@ public class DataReaderManager {
 
     public static void main(String[] args) {
         try {
-            DataReaderManager dr = new DataReaderManager("/Users/giulio/Desktop/Data_Reader/src/com/company/data_test.trc");
+            DataReaderManager dr = new DataReaderManager("src/com/company/data_test.trc");
             int res = dr.readDataFromTRC();
             System.out.println("Numero linee lette: " + res);
             messagesArray.printAllTest();
