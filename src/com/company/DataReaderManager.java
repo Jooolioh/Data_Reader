@@ -15,12 +15,12 @@ public class DataReaderManager {
         fName = file;
     }
 
-    public static void main(String[] args) {
+    public void readFile() {
         try {
-            DataReaderManager dr = new DataReaderManager("src/com/company/Log_temp.csv");
-            int res = dr.readDataFromLog();
-            System.out.println("Numero linee lette: " + res);
-            messagesArray.printAllTest();
+            //DataReaderManager dr = new DataReaderManager("src/com/company/Log_temp.csv");
+            int res = readDataFromLog();
+            //System.out.println("Numero linee lette: " + res);
+            //messagesArray.printAllTest();
         }catch(FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Errore File non trovato!");
@@ -72,5 +72,7 @@ public class DataReaderManager {
         return countFile;
     }
 
-
+    public MessagesArray getMessagesArray() {
+        return messagesArray;
+    }
 }

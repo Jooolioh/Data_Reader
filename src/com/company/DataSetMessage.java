@@ -21,7 +21,7 @@ public class DataSetMessage {
     public void convertTime(){
         try{
             timeParsed = sdf.parse(time);
-            System.out.println(timeParsed);
+            //System.out.println(timeParsed);
         } catch (Exception e) {
             e.printStackTrace();
         }
