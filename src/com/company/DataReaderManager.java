@@ -4,10 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 
 public class DataReaderManager {
     private String fName;
@@ -19,10 +17,10 @@ public class DataReaderManager {
 
     public static void main(String[] args) {
         try {
-            DataReaderManager dr = new DataReaderManager("src/com/company/data_test.trc");
-            int res = dr.readDataFromTRC();
+            DataReaderManager dr = new DataReaderManager("out/production/Data_Reader/com/company/Log_temp.csv");
+            int res = dr.readDataFromLog();
             System.out.println("Numero linee lette: " + res);
-            messagesArray.printAllTest();
+            //messagesArray.printAllTest();
         }catch(FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Errore File non trovato!");
@@ -48,7 +46,7 @@ public class DataReaderManager {
         return count;
     }
 
-    public int readDataFromTRC() throws FileNotFoundException, IOException {
+    public int readDataFromLog() throws FileNotFoundException, IOException {
         messagesArray = new MessagesArray();
 
 
@@ -60,23 +58,29 @@ public class DataReaderManager {
 
         //Reading Input File
         String linea = br.readLine();
-        int countFile = 0, cOut = 0;
-        while (linea != null) {
-            if (linea.charAt(0) != ';') {
-                //System.out.println(linea);
-                //TODO parametrizzare questi valori REGEDIT
-                //System.out.println(linea);
-                String id = linea.substring(32, 36);
-                //System.out.println(id);
-                String time = linea.substring(10, 20);
-                //System.out.println(time);
-                String dtLength = linea.substring(38, 39);
-                //System.out.println(dtLength);
-                String mex = linea.substring(41, 64).replace(" ", "");
-                //System.out.println(mex);
+        int countFile = 0;
 
-                messagesArray.addMessage(new BaseMessage(mex, id, Float.parseFloat(time), Integer.parseInt(dtLength)));
+        while (linea != null) {
+            if (linea.startsWith("\"Time")){
+                linea = br.readLine();
+                countFile++;
+                break;
             }
+            linea = br.readLine();
+            countFile++;
+        }
+
+        while (linea != null) {
+            //TODO parametrizzare questi valori REGEDIT
+            //System.out.print(linea);
+            String id = linea.substring(16, 18);
+            System.out.print("Id: " + id);
+            String time = linea.substring(1, 13);
+            System.out.print(" Time: " + time);
+            String mex = linea.substring(30, 53).replace(" ", "");
+            System.out.println(" Mex: " + mex);
+            messagesArray.addMessage(new BaseMessage(mex, id, Float.parseFloat(time), Integer.parseInt(dtLength)));
+
             linea = br.readLine();
             countFile++;
         }

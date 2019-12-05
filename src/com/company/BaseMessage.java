@@ -19,15 +19,7 @@ public class BaseMessage {
         return convertHexToBin(mex);
     }
 
-    private final String[] hexBits = {
-            "0000", "0001", "0010", "0011",
-            "0100", "0101", "0110", "0111",
-            "1000", "1001", "1010", "1011",
-            "1100", "1101", "1110", "1111"
-    };
-
-    private String convertHexToBin(String hexStr)
-    {
+    private String convertHexToBin(String hexStr) {
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < hexStr.length(); i++) {
             int j = Character.digit(hexStr.toLowerCase().charAt(i), 16);
@@ -61,4 +53,11 @@ public class BaseMessage {
                 ", dataLength=" + dataLength +
                 '}';
     }
+
+    private final String[] hexBits = {
+            "0000", "0001", "0010", "0011",
+            "0100", "0101", "0110", "0111",
+            "1000", "1001", "1010", "1011",
+            "1100", "1101", "1110", "1111"
+    };
 }
